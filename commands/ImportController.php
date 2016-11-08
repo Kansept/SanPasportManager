@@ -4,6 +4,7 @@ namespace app\commands;
 
 use yii\console\Controller;
 use app\models\OrlovAntennas;
+use app\models\OrlovBcf;
 
 class ImportController extends Controller
 {
@@ -49,4 +50,46 @@ class ImportController extends Controller
 
         return 0;
     }
+
+    public function actionOrlovBcf($fileName = 'test_bcf.xls')
+    {
+        $filePath = "/var/www/public/download/" . $fileName;
+				if (!file_exists($filePath)) {
+						echo "File does not exist " . $filePath . "\n";
+						return 0;
+				}
+        \PHPExcel_Settings::setCacheStorageMethod(\PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip);
+        $xls = \PHPExcel_IOFactory::load($filePath);
+        $xls->setActiveSheetIndex(0);
+        $sheet = $xls->getActiveSheet();
+
+				for ($row = 2; $row <= $sheet->getHighestRow(); $row++) {
+						$launch_date = (string) $sheet->getCell('M' . $row)->getValue();
+						if ($launch_date === "") { 
+								$launch_date = NULL;
+						} else {
+							  $launch_date = \DateTime::createFromFormat( "d.m.Y", $launch_date)->format("Y-m-d");
+						}
+
+            $OrlovBcfItem = new OrlovBcf([
+								'region'         => (string) $sheet->getCell('A' . $row)->getValue(),
+								'number_cabinet' => (integer) $sheet->getCell('I' . $row)->getValue(),
+								'config'         => (string) $sheet->getCell('J' . $row)->getValue(),
+								'name'           => (string) $sheet->getCell('K' . $row)->getValue(),
+								'operation_type' => (string) $sheet->getCell('L' . $row)->getValue(),
+								'launch_date'    => $launch_date		
+						]);
+
+						if (!$OrlovBcfItem->insert()) {
+								echo "row - " . $row . "\n";
+								print_r($OrlovBcfItem->getErrors());
+						}
+            unset($OrlovBcfItem);
+				}
+
+        echo "import rows - " . $sheet->getHighestRow() . "\n";
+
+        return 0;
+    }
+
 }
