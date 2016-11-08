@@ -17,7 +17,7 @@ use Yii;
  * @property string $band
  * @property double $height
  * @property double $azimuth
- * @property integer $tilt
+ * @property double $tilt
  * @property string $antenna
  * @property string $polarization
  */
@@ -37,10 +37,9 @@ class OrlovAntennas extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['height', 'azimuth'], 'number'],
-            [['tilt'], 'integer'],
-            [['name', 'region', 'latitude', 'longitude', 'type_sector'], 'string', 'max' => 50],
-            [['address'], 'string', 'max' => 250],
+            [['height', 'azimuth', 'tilt'], 'number'],
+            [['name', 'address'], 'string', 'max' => 250],
+            [['region', 'latitude', 'longitude', 'type_sector'], 'string', 'max' => 50],
             [['band', 'antenna'], 'string', 'max' => 100],
             [['polarization'], 'string', 'max' => 10],
         ];

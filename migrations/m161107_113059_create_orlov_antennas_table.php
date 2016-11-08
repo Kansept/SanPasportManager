@@ -14,7 +14,7 @@ class m161107_113059_create_orlov_antennas_table extends Migration
     {
         $this->createTable('orlov_antennas', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(50),
+            'name' => $this->string(250),
             'address' => $this->string(250),
             'region' => $this->string(50),
             'latitude' => $this->string(50),
@@ -23,7 +23,7 @@ class m161107_113059_create_orlov_antennas_table extends Migration
             'band' => $this->string(100),
             'height' => $this->float(),
             'azimuth' => $this->float(),
-            'tilt' => $this->integer(),
+            'tilt' => $this->float(),
             'antenna' => $this->string(100),
             'polarization' => $this->string(10)
         ]);
