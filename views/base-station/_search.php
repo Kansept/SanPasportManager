@@ -15,21 +15,10 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
     <?= $form->field($model, 'name') ?>
-
     <?= $form->field($model, 'address') ?>
-
     <?= $form->field($model, 'region_id') ?>
-
-    <?= $form->field($model, 'latitude') ?>
-
-    <?php // echo $form->field($model, 'longitude') ?>
-
-    <?php // echo $form->field($model, 'mobile_operator_id') ?>
-
-    <?php // echo $form->field($model, 'date_begin') ?>
+    <?= $form->field($model, 'mobile_operator_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Region */
 
-$this->title = 'Update Region: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Regions', 'url' => ['index']];
+$this->title = 'Обновление региона: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Регионы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

@@ -53,13 +53,13 @@ class BaseStation extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'address' => 'Address',
-            'region_id' => 'Region ID',
-            'latitude' => 'Latitude',
-            'longitude' => 'Longitude',
-            'mobile_operator_id' => 'Mobile Operator ID',
-            'date_begin' => 'Date Begin',
+            'name' => 'Название',
+            'address' => 'Адрес',
+            'region_id' => 'Регион',
+            'latitude' => 'Широта',
+            'longitude' => 'Долгота',
+            'mobile_operator_id' => 'Оператор',
+            'date_begin' => 'Дата запуска в эсплуатацию',
         ];
     }
 

@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\MobileOperator */
 
-$this->title = 'Update Mobile Operator: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Mobile Operators', 'url' => ['index']];
+$this->title = 'Редактировать мобильного оператора: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Мобильные операторы:', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Редактирование';
 ?>
 <div class="mobile-operator-update">
 

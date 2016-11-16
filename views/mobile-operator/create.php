@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\MobileOperator */
 
-$this->title = 'Create Mobile Operator';
-$this->params['breadcrumbs'][] = ['label' => 'Mobile Operators', 'url' => ['index']];
+$this->title = 'Добавить мобильного оператора';
+$this->params['breadcrumbs'][] = ['label' => 'Мобильные операторы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mobile-operator-create">

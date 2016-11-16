@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Region */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Regions', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Регионы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="region-view">
@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'name',
         ],
     ]) ?>

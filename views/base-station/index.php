@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\BaseStationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Base Stations';
+$this->title = 'БС';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="base-station-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Base Station', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить БС', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,14 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
-            'address',
             'region_id',
-            'latitude',
-            // 'longitude',
-            // 'mobile_operator_id',
-            // 'date_begin',
+            'address',
+            'mobile_operator_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

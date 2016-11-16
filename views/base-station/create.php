@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\BaseStation */
 
-$this->title = 'Create Base Station';
-$this->params['breadcrumbs'][] = ['label' => 'Base Stations', 'url' => ['index']];
+$this->title = 'Добавить БС';
+$this->params['breadcrumbs'][] = ['label' => 'БС', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="base-station-create">
