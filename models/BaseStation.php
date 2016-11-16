@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\AttributeBehavior;
+use yii\db\ActiveRecord;
+use app\behaviors\WithoutWhitespaceBehavior;
 
 /**
  * This is the model class for table "base_station".
@@ -19,7 +22,7 @@ use Yii;
  * @property MobileOperator $mobileOperator
  * @property Region $region
  */
-class BaseStation extends \yii\db\ActiveRecord
+class BaseStation extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -60,6 +63,28 @@ class BaseStation extends \yii\db\ActiveRecord
             'longitude' => 'Долгота',
             'mobile_operator_id' => 'Оператор',
             'date_begin' => 'Дата запуска в эсплуатацию',
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => WithoutWhitespaceBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'latitude',
+                    ActiveRecord::EVENT_BEFORE_UPDATE => 'latitude',
+                ],
+                'field' => 'latitude',
+            ],
+            [
+                'class' => WithoutWhitespaceBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'longitude',
+                    ActiveRecord::EVENT_BEFORE_UPDATE => 'longitude',
+                ],
+                'field' => 'longitude',
+            ],
         ];
     }
 
