@@ -28,15 +28,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'name',
             'address',
-            'region_id',
-            'latitude',
-            'longitude',
-            'mobile_operator_id',
+            'region.name',
+            [ 
+                'label' => 'Координаты',
+                'value' => Html::a(
+                    $model['latitude'] . ' ' . $model['longitude'], 
+                    'http://yandex.ru/maps/?mode=search&text=' . $model['latitude'] . ' ' . $model['longitude'],
+                    ['target' => '_blank']
+                ),
+                'format' => 'raw',
+            ],
+            'mobileOperator.name',
             'date_begin',
         ],
     ]) ?>
-
 </div>

@@ -58,10 +58,12 @@ class BaseStation extends ActiveRecord
             'id' => 'ID',
             'name' => 'Название',
             'address' => 'Адрес',
-            'region_id' => 'Регион',
+            'region_id' => 'Регион ИД',
+            'regionName' => 'Регион',
             'latitude' => 'Широта',
             'longitude' => 'Долгота',
-            'mobile_operator_id' => 'Оператор',
+            'mobile_operator_id' => 'Оператор ИД',
+            'mobileOperatorName' => 'Оператор',
             'date_begin' => 'Дата запуска в эсплуатацию',
         ];
     }
@@ -96,11 +98,20 @@ class BaseStation extends ActiveRecord
         return $this->hasOne(MobileOperator::className(), ['id' => 'mobile_operator_id']);
     }
 
+    public function getMobileOperatorName()
+    {
+        return $this->mobileOperator->name;
+    }
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getRegion()
     {
         return $this->hasOne(Region::className(), ['id' => 'region_id']);
+    }
+
+    public function getRegionName()
+    {
+        return $this->region->name;
     }
 }

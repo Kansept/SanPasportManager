@@ -25,9 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'name',
-            'region_id',
+            'regionName',
             'address',
-            'mobile_operator_id',
+            'mobileOperatorName',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
