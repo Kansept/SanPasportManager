@@ -14,10 +14,10 @@ class m161121_060624_create_document_table extends Migration
     {
         $this->createTable('document', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(255),
+            'name' => $this->string(255)->notNull(),            
             'source' => $this->string(255),
-            'base_station_id' => $this->integer(),
-            'link' => $this->string(255),
+            'base_station_id' => $this->integer()->notNull(),
+            'link' => $this->string(255)->notNull()->unique(),
         ]);
 
 				$this->addForeignKey(
