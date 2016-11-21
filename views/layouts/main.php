@@ -33,6 +33,7 @@ JasnyBootstrapAsset::register($this);
     <li><?= Html::a('Регионы', ['region/index']) ?></li>
     <li><?= Html::a('Операторы', ['mobile-operator/index']) ?></li>
     <li><?= Html::a('БС', ['base-station/index']) ?></li>
+    <li><?= Html::a('Статусы проекта', ['status/index']) ?></li>
   </ul>
 </nav>
 
