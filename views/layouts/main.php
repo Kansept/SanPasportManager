@@ -35,6 +35,7 @@ JasnyBootstrapAsset::register($this);
     <li><?= Html::a('БС', ['base-station/index']) ?></li>
     <li><?= Html::a('Статусы проекта', ['status/index']) ?></li>
     <li><?= Html::a('Заказчики', ['customer/index']) ?></li>
+    <li><?= Html::a('Документы', ['document/index']) ?></li>
   </ul>
 </nav>
 
