@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BaseStationSearch */
@@ -25,9 +26,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'name',
-            'regionName',
+            [
+                'attribute' => 'region_id',
+                'label' => 'Регион',
+                'filter' => ArrayHelper::map(app\models\Region::find()->asArray()->all(), 'id', 'name'),
+                'value' => 'regionName'
+            ],
             'address',
-            'mobileOperatorName',
+            [
+                'attribute' => 'mobile_operator_id',
+                'label' => 'Оператор',
+                'filter' => ArrayHelper::map(app\models\MobileOperator::find()->asArray()->all(), 'id', 'name'),
+                'value' => 'mobileOperatorName'
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
