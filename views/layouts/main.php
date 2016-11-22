@@ -30,12 +30,19 @@ JasnyBootstrapAsset::register($this);
   <a class="navmenu-brand" href="#">Project name</a>
   <ul class="nav navmenu-nav">
     <li><?= Html::a('Home', ['site/index']) ?></li>
-    <li><?= Html::a('Регионы', ['region/index']) ?></li>
-    <li><?= Html::a('Операторы', ['mobile-operator/index']) ?></li>
     <li><?= Html::a('БС', ['base-station/index']) ?></li>
-    <li><?= Html::a('Статусы проекта', ['status/index']) ?></li>
-    <li><?= Html::a('Заказчики', ['customer/index']) ?></li>
+    <li><?= Html::a('Проекты', ['project/index']) ?></li>
     <li><?= Html::a('Документы', ['document/index']) ?></li>
+    <li><?= Html::a('Доп. Информация', ['orlov/index']) ?></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Справочная <b class="caret"></b></a>
+      <ul class="dropdown-menu navmenu-nav" role="menu">
+        <li><?= Html::a('Операторы', ['mobile-operator/index']) ?></li>
+        <li><?= Html::a('Регионы', ['region/index']) ?></li>
+        <li><?= Html::a('Статусы проекта', ['status/index']) ?></li>
+        <li><?= Html::a('Заказчики', ['customer/index']) ?></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

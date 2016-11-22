@@ -121,4 +121,15 @@ class BaseStationController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionList($id) 
+    { 
+        $stations = BaseStation::find()->where(['region_id' => $id])->asArray()->all();
+        $out = '<option>--- Выберите регион ---</option>';
+        foreach($stations as $station) {
+           $out .= '<option value="' . $station['id'] . '">' . $station['name'] .  '</option>';
+        }
+
+        echo $out;
+    }
 }

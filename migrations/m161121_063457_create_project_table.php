@@ -14,6 +14,7 @@ class m161121_063457_create_project_table extends Migration
     {
         $this->createTable('project', [
             'id' => $this->primaryKey(),
+            'name' => $this->string(255)->notNull(),
             'base_station_id' => $this->integer()->notNull(),
             'customer_id' => $this->integer()->notNull(),
             'status_id' => $this->integer()->notNull(),

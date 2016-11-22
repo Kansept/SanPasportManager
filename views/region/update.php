@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = 'Обновление региона: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Регионы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Редактировать';
 ?>
 <div class="region-update">
 
