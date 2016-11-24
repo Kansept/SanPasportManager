@@ -25,7 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-<?php print_r($model->region) ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
