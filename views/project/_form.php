@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use app\models\BaseStation;
 use app\models\Customer;
+use app\models\MobileOperator;
 use app\models\Region;
 use app\models\Status;
 
@@ -16,11 +17,20 @@ use app\models\Status;
 
 <?php 
 $urlListBs = Url::toRoute(['base-station/list', 'id' => '']);
-
 $loadBaseStation = <<< JS
   $('select#project-base_station_id').prop('disabled', true);
   $.post('{$urlListBs}' + $(this).val(), function(data) {
     $('select#project-base_station_id')
+      .html(data)
+      .prop('disabled', false);
+  });
+JS;
+
+$urlListRegion = Url::toRoute(['region/list', 'mobile_operator_id' => '']);
+$loadRegion = <<< JS
+  $('select#project-region_id').prop('disabled', true);
+  $.post('{$urlListRegion}' + $(this).val(), function(data) {
+    $('select#project-region_id')
       .html(data)
       .prop('disabled', false);
   });
@@ -31,10 +41,19 @@ JS;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'mobile_operator_id')->dropDownList(
+      ArrayHelper::map(MobileOperator::find()->all(), 'id', 'name'),
+      [
+        'prompt' => '--- Выберите оператора ---',
+        'onchange' => $loadRegion,
+      ]
+    ) ?>
+
     <?= $form->field($model, 'region_id')->dropDownList(
       ArrayHelper::map(Region::find()->all(), 'id', 'name'),
       [
         'prompt' => '--- Выберите регион ---',
+        'disabled' => 'disabled',
         'onchange' => $loadBaseStation,
       ]
     ) ?>

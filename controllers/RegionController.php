@@ -121,4 +121,22 @@ class RegionController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionList($mobile_operator_id) 
+    { 
+        $regions = Region::find()
+          ->select(['region.id', 'region.name'])
+          ->innerJoin('base_station', 'base_station.region_id = region.id' )
+          ->innerJoin('mobile_operator', 'mobile_operator.id = base_station.mobile_operator_id')
+          ->where(['mobile_operator.id' => $mobile_operator_id])
+          ->asArray()
+          ->all();
+
+        $out = '<option>--- Выберите регион ---</option>';
+        foreach($regions as $station) {
+           $out .= '<option value="' . $station['id'] . '">' . $station['name'] .  '</option>';
+        }
+       
+        echo $out;
+    }
 }

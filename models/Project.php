@@ -25,6 +25,7 @@ use Yii;
 class Project extends \yii\db\ActiveRecord
 {
     public $region_id;
+    public $mobile_operator_id;
 
     /**
      * @inheritdoc

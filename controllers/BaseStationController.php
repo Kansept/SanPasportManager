@@ -125,7 +125,7 @@ class BaseStationController extends Controller
     public function actionList($id) 
     { 
         $stations = BaseStation::find()->where(['region_id' => $id])->asArray()->all();
-        $out = '<option>--- Выберите регион ---</option>';
+        $out = '<option>--- Выберите БС ---</option>';
         foreach($stations as $station) {
            $out .= '<option value="' . $station['id'] . '">' . $station['name'] .  '</option>';
         }
