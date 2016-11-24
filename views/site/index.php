@@ -103,7 +103,7 @@ $this->title = 'My Yii Application';
                 'customerName',
                 [
                   'content' => function ($model, $key, $index, $column) {
-                    return Html::a('Открыть', Url::toRoute(['project\view']));
+                    return Html::a('Открыть', Url::toRoute(['/project/view', 'id' => $model->id], true));
                   }
                 ]
                 //['class' => 'yii\grid\ActionColumn'],
