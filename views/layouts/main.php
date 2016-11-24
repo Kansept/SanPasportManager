@@ -27,10 +27,9 @@ JasnyBootstrapAsset::register($this);
 <?php $this->beginBody() ?>
 
 <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
-  <a class="navmenu-brand" href="#">Project name</a>
+  <?= Html::a('SanPasport Manager', ['site/index'], ['class' => 'navmenu-brand']) ?>
   <ul class="nav navmenu-nav">
-    <li><?= Html::a('Home', ['site/index']) ?></li>
-    <li><?= Html::a('БС', ['base-station/index']) ?></li>
+    <li><?= Html::a('Базовые станции', ['base-station/index']) ?></li>
     <li><?= Html::a('Проекты', ['project/index']) ?></li>
     <li><?= Html::a('Документы', ['document/index']) ?></li>
     <li><?= Html::a('Доп. Информация', ['orlov/index']) ?></li>
@@ -58,6 +57,10 @@ JasnyBootstrapAsset::register($this);
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            'homeLink' => [
+              'label' => 'Главная',
+              'url' => Yii::$app->homeUrl,
+            ]
         ]) ?>
         <?= $content ?>
     </div>
@@ -70,14 +73,6 @@ JasnyBootstrapAsset::register($this);
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
-<?php
-        /*
-$script = <<< JS
-  $('.navmenu').offcanvas();
-JS;
-$this->registerJs($script);
-         */
-?>
 
 <?php $this->endBody() ?>
 </body>
