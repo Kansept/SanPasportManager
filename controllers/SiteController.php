@@ -71,6 +71,7 @@ class SiteController extends Controller
             ->select(['count(*) as count', '`status`.`name`'])
             ->leftJoin('status', '`status`.`id` = `project`.`status_id`')
             ->groupBy('status_id')
+            ->orderBy(['status.sort' => SORT_ASC])
             ->asArray()
             ->all();
 

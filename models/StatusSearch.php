@@ -18,7 +18,7 @@ class StatusSearch extends Status
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'sort'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class StatusSearch extends Status
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'sort' => $this->sort,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);

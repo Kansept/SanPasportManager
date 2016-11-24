@@ -74,7 +74,7 @@ JS;
     ) ?> 
 
     <?= $form->field($model, 'status_id')->dropDownList(
-      ArrayHelper::map(Status::find()->all(), 'id', 'name'),
+      ArrayHelper::map(Status::find()->orderBy(['sort' => SORT_ASC])->all(), 'id', 'name'),
       ['prompt' => '--- Выберите статус проекта ---' ]
     ) ?>
 

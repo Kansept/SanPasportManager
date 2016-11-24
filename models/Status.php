@@ -27,6 +27,7 @@ class Status extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'string', 'max' => 100],
+            [['sort'], 'integer']
         ];
     }
 
@@ -38,6 +39,17 @@ class Status extends \yii\db\ActiveRecord
         return [
             'id' => 'Ид',
             'name' => 'Название',
+            'sort' => 'Порядок сортировки',
         ];
+    }
+
+    public function beforeSave($insert) 
+    {
+        if (parent::beforeSave($insert)) {
+            if ($this->sort == NULL) {
+                $this->sort = 0;
+            }
+            return true;
+        }
     }
 }
