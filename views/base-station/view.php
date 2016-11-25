@@ -28,9 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            'mobileOperatorName',
             'name',
+            'regionName',
             'address',
-            'region.name',
             [ 
                 'label' => 'Координаты',
                 'value' => Html::a(
@@ -40,7 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 ),
                 'format' => 'raw',
             ],
-            'mobileOperator.name',
             'date_begin',
         ],
     ]) ?>

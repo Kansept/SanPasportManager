@@ -23,7 +23,7 @@ class ProjectSearch extends Project
     public function rules()
     {
         return [
-            [['id', 'base_station_id', 'customer_id', 'status_id', 'cost', 'paid', 'drawing'], 'integer'],
+            [['id', 'region_id', 'base_station_id', 'customer_id', 'status_id', 'cost', 'paid', 'drawing'], 'integer'],
             [['regionName', 'baseStationName', 'customerName', 'statusName', 'begin_date', 'end_date'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class ProjectSearch extends Project
                 'drawing',
                 'begin_date',
                 'end_date',
-                'regionName' => [
+                'region_id' => [
                     'asc' => ['region.name' => SORT_ASC],
                     'desc' => ['region.name' => SORT_DESC],
                 ],
@@ -68,11 +68,11 @@ class ProjectSearch extends Project
                     'asc' => ['base_station.name' => SORT_ASC],
                     'desc' => ['base_station.name' => SORT_DESC],
                 ],
-                'customerName' => [
+                'customer_id' => [
                     'asc' => ['customer.name' => SORT_ASC],
                     'desc' => ['customer.name' => SORT_DESC],
                 ],
-                'statusName' => [
+                'status_id' => [
                     'asc' => ['status.name' => SORT_ASC],
                     'desc' => ['status.name' => SORT_DESC],
                 ],
@@ -94,6 +94,7 @@ class ProjectSearch extends Project
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'region_id' => $this->region_id,
             'base_station_id' => $this->base_station_id,
             'customer_id' => $this->customer_id,
             'status_id' => $this->status_id,

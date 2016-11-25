@@ -25,8 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
-                'attribute' => 'regionName',
-                'filter' => ArrayHelper::map(app\models\Region::find()->asArray()->all(), 'name', 'name'),
+                'attribute' => 'region_id',
+                'filter' => ArrayHelper::map(app\models\Region::find()->asArray()->all(), 'id', 'name'),
+                'value' => 'regionName',
             ],
             'baseStationName',
             [

@@ -15,28 +15,30 @@ use app\models\Region;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'mobile_operator_id')->dropDownList(
+        ArrayHelper::map(MobileOperator::find()->all() , 'id', 'name'),
+        ['prompt' => '--- Выберите оператора ---' ]
+      )->label($model->getAttributeLabel('mobileOperatorName')) 
+    ?> 
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'region_id')->dropDownList(
-      ArrayHelper::map(Region::find()->all(), 'id', 'name'),
-      ['prompt' => '--- Выберите регион ---' ]
-    ) ?>
+        ArrayHelper::map(Region::find()->all(), 'id', 'name'),
+        ['prompt' => '--- Выберите регион ---' ]
+      )->label($model->getAttributeLabel('regionName'))
+    ?>
+
+    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'latitude')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'mobile_operator_id')->dropDownList(
-      ArrayHelper::map(MobileOperator::find()->all() , 'id', 'name'),
-      ['prompt' => '--- Выберите оператора ---' ]
-    ) ?> 
-
     <?= $form->field($model, 'date_begin')->textInput(['data-mask'=>'9999-99-99']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Редактировать', 
+        <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', 
         ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 

@@ -56,15 +56,13 @@ class BaseStationSearch extends BaseStation
             'attributes' => [
                 'name',
                 'address',
-                'regionName' => [
+                'region_id' => [
                     'asc' => ['region.name' => SORT_ASC],
                     'desc' => ['region.name' => SORT_DESC],
-                    'label' => 'Country Name'
                 ],
-                'mobileOperatorName' => [
+                'mobile_operator_id' => [
                     'asc' => ['mobile_operator.name' => SORT_ASC],
                     'desc' => ['mobile_operatorname' => SORT_DESC],
-                    'label' => 'Mobile Operator'
                 ]
             ]
         ]);
