@@ -43,6 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'drawing',
                 'filter' => ['0' => 'нет', '1' => 'есть'],
+                'content' => function ($model, $key, $index, $column) {
+                    return ($model->drawing)? '<span class="glyphicon glyphicon-ok"></span>' : '-';
+                },
+                'format' => 'html',
             ],
             'begin_date',
             'end_date',

@@ -88,6 +88,8 @@ JS;
 
     <?= $form->field($model, 'end_date')->textInput(['data-mask'=>'9999-99-99']) ?>
 
+    <?= $form->field($model, 'description')->textArea() ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

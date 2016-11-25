@@ -35,9 +35,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'statusName',
             'cost',
             'paid',
-            'drawing',
+            [
+                'label' => 'Ситуационный план',
+                'value' => ($model->drawing)? '<span class="glyphicon glyphicon-ok"></span>' : '-',
+                'format' => 'html',
+            ],
             'begin_date',
             'end_date',
+            'description',
         ],
     ]) ?>
 

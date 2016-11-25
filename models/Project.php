@@ -43,7 +43,7 @@ class Project extends \yii\db\ActiveRecord
         return [
             [['base_station_id', 'name', 'customer_id', 'status_id', 'cost'], 'required'],
             [['base_station_id', 'customer_id', 'status_id', 'cost', 'paid', 'drawing'], 'integer'],
-            [['name'], 'string', 'max' => 255],
+            [['name', 'description'], 'string', 'max' => 255],
             [['begin_date', 'end_date'], 'safe'],
             [['status_id'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['status_id' => 'id']],
             [['base_station_id'], 'exist', 'skipOnError' => true, 'targetClass' => BaseStation::className(), 'targetAttribute' => ['base_station_id' => 'id']],
@@ -68,6 +68,7 @@ class Project extends \yii\db\ActiveRecord
             'begin_date' => 'Дата начала',
             'end_date' => 'Дата конца',
             'region_id' => 'Регион',
+            'description' => 'Примечание',
             'baseStationName' => 'БС',
             'customerName' => 'Заказчик',
             'statusName' => 'Статус',
