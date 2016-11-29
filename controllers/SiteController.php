@@ -35,14 +35,14 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $baseStations = \app\models\BaseStation::find()
-            ->select(['count(*) as count', 'mobile_operator.name'])
+          ->select(['count(*) as count', 'mobile_operator.name', 'base_station.mobile_operator_id'])
             ->leftJoin('mobile_operator', '`base_station`.`mobile_operator_id` = `mobile_operator`.`id`')
             ->groupBy('mobile_operator_id')
             ->asArray()
             ->all();
 
         $statuses = \app\models\Project::find()
-            ->select(['count(*) as count', '`status`.`name`'])
+            ->select(['count(*) as count', '`status`.`name`', '`status`.`id`'])
             ->leftJoin('status', '`status`.`id` = `project`.`status_id`')
             ->groupBy('status_id')
             ->orderBy(['status.sort' => SORT_ASC])

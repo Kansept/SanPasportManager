@@ -29,7 +29,9 @@ $this->title = 'My Yii Application';
           <tbody>
             <?php foreach($baseStations as $baseStartion) { ?>
             <tr>
-              <td><?= $baseStartion['name'] ?></td>
+              <td><?= Html::a($baseStartion['name'], Url::to(['base-station/index', 
+                'BaseStationSearch[mobile_operator_id]' => $baseStartion['mobile_operator_id']]) ) ?>
+              </td>
               <td><?= $baseStartion['count'] ?></td>
             </tr>
             <?php } ?>
@@ -49,7 +51,9 @@ $this->title = 'My Yii Application';
           <tbody>
             <?php foreach ($statuses as $status) { ?>
             <tr>
-              <td><?= $status['name']?></td>
+              <td><?= Html::a($status['name'], Url::to(['project/index', 
+                'ProjectSearch[status_id]' => $status['id']]) ) ?>
+              </td>
               <td><?= $status['count']?></td>
             </tr>
             <?php } ?>
