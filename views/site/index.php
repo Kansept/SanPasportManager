@@ -93,8 +93,10 @@ $this->title = 'My Yii Application';
       <div class="col-lg-12">
         <h4>Проекты в работе</h4>
         <?php 
-          $searchModel = new \app\models\ProjectSearch();
-          $dataProvider = $searchModel->search(['ProjectSearch' => ['status_id' => '1'] ]);
+          $dataProvider = new \yii\data\ActiveDataProvider([
+            'query' => \app\models\Project::find(),
+            'sort' => false
+          ]);
         ?>
         <?= \yii\grid\GridView::widget([
             'dataProvider' => $dataProvider,
@@ -110,7 +112,6 @@ $this->title = 'My Yii Application';
                     return Html::a('Открыть', Url::toRoute(['/project/view', 'id' => $model->id], true));
                   }
                 ]
-                //['class' => 'yii\grid\ActionColumn'],
             ],
         ]); ?>
       </div>
