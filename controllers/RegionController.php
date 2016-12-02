@@ -122,8 +122,9 @@ class RegionController extends Controller
         }
     }
 
-    public function actionList($mobile_operator_id) 
+    public function actionList() 
     { 
+        $mobile_operator_id = Yii::$app->request->post('mobile_operator_id');
         $regions = Region::find()
           ->select(['region.id', 'region.name'])
           ->innerJoin('base_station', 'base_station.region_id = region.id' )

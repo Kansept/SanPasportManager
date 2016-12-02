@@ -16,24 +16,34 @@ use app\models\Status;
 ?>
 
 <?php 
-$urlListBs = Url::toRoute(['base-station/list', 'id' => '']);
+$urlListBs = Url::toRoute(['base-station/list']);
 $loadBaseStation = <<< JS
   $('select#project-base_station_id').prop('disabled', true);
-  $.post('{$urlListBs}' + $(this).val(), function(data) {
-    $('select#project-base_station_id')
-      .html(data)
-      .prop('disabled', false);
-  });
+  $.post('{$urlListBs}', {
+      'id': $(this).val(), 
+      'mobile_operator_id': $('select#project-mobile_operator_id').val(),
+    }, function(data) {
+      $('select#project-base_station_id')
+        .html(data)
+        .prop('disabled', false);
+    }
+  );
 JS;
 
-$urlListRegion = Url::toRoute(['region/list', 'mobile_operator_id' => '']);
+$urlListRegion = Url::toRoute(['region/list']);
 $loadRegion = <<< JS
   $('select#project-region_id').prop('disabled', true);
-  $.post('{$urlListRegion}' + $(this).val(), function(data) {
+  $('select#project-base_station_id')
+    .html('<option>--- Выберите БС ---</option>')
+    .prop('disabled', true);
+  $.post('{$urlListRegion}', {
+    'mobile_operator_id': $(this).val()
+  }, function(data) {
     $('select#project-region_id')
       .html(data)
       .prop('disabled', false);
-  });
+    }
+  );
 JS;
 ?>
 
@@ -50,7 +60,7 @@ JS;
     ) ?>
 
     <?= $form->field($model, 'region_id')->dropDownList(
-      ArrayHelper::map(Region::find()->all(), 'id', 'name'),
+      [],
       [
         'prompt' => '--- Выберите регион ---',
         'disabled' => 'disabled',

@@ -41,7 +41,7 @@ class Project extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['base_station_id', 'name', 'customer_id', 'status_id', 'cost'], 'required'],
+            [['base_station_id', 'name', 'customer_id', 'status_id', 'cost', 'mobile_operator_id', 'region_id'], 'required'],
             [['base_station_id', 'customer_id', 'status_id', 'cost', 'paid', 'drawing'], 'integer'],
             [['name', 'description'], 'string', 'max' => 255],
             [['begin_date', 'end_date'], 'safe'],

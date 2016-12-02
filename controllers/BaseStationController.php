@@ -122,9 +122,15 @@ class BaseStationController extends Controller
         }
     }
 
-    public function actionList($id) 
+    public function actionList() 
     { 
-        $stations = BaseStation::find()->where(['region_id' => $id])->asArray()->all();
+        $id = Yii::$app->request->post('id');
+        $mobile_operator_id = Yii::$app->request->post('mobile_operator_id');
+
+        $stations = BaseStation::find()
+            ->where(['region_id' => $id, 'mobile_operator_id' => $mobile_operator_id])
+            ->asArray()
+            ->all();
         $out = '<option>--- Выберите БС ---</option>';
         foreach($stations as $station) {
            $out .= '<option value="' . $station['id'] . '">' . $station['name'] .  '</option>';
