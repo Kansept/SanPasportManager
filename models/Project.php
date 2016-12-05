@@ -67,12 +67,13 @@ class Project extends \yii\db\ActiveRecord
             'drawing' => 'Ситуационный план',
             'begin_date' => 'Дата начала',
             'end_date' => 'Дата конца',
-            'region_id' => 'Регион',
             'description' => 'Примечание',
             'baseStationName' => 'БС',
             'customerName' => 'Заказчик',
             'statusName' => 'Статус',
             'regionName' => 'Регион',
+            'region_id' => 'Регион',
+            'mobile_operator_id' => 'Оператор',           
         ];
     }
 

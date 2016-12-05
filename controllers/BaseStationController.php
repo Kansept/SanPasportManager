@@ -124,11 +124,11 @@ class BaseStationController extends Controller
 
     public function actionList() 
     { 
-        $id = Yii::$app->request->post('id');
+        $region_id = Yii::$app->request->post('region_id');
         $mobile_operator_id = Yii::$app->request->post('mobile_operator_id');
 
         $stations = BaseStation::find()
-            ->where(['region_id' => $id, 'mobile_operator_id' => $mobile_operator_id])
+            ->where(['region_id' => $region_id, 'mobile_operator_id' => $mobile_operator_id])
             ->asArray()
             ->all();
         $out = '<option>--- Выберите БС ---</option>';
